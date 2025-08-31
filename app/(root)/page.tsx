@@ -1,9 +1,12 @@
 import React from 'react'
+import Home from '../components/Home'
 
-const page = () => {
+function page() {
   return (
     <div>
-      home page
+     <div className='relative bottom-32'>
+       <Home/>
+     </div>
     </div>
   )
 }

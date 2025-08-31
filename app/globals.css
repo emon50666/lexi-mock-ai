@@ -83,13 +83,13 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
+  --primary: #8e31e1;
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
+  --secondary: #7300d1;
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
+  --muted: #8e31e1;
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
+  --accent: #100628;
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
@@ -119,3 +119,130 @@
   }
 }
 
+
+
+
+.animated-border {
+  position: relative;
+  border-radius: 0.5rem; /* Same as rounded-lg */
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  padding: 2px; /* Border thickness */
+  background: linear-gradient(270deg, #ffab3c, #b061fa, #4907ff, #0bff40);
+  background-size: 400% 400%;
+  animation: borderRun 4s linear infinite;
+
+  pointer-events: none; /* ✅ FIX: allows mouse & input inside */
+  
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+@keyframes borderRun {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.home_banner_outer {
+  position: relative;
+  background-color: #0F1F34;
+  background-image: url('/co.png'); /* Use direct path if in /public */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 850px;
+  z-index: 1;
+
+  animation: bgMove 4s ease-in infinite ;
+}
+
+/* Animation for smooth background movement */
+@keyframes bgMove {
+  0% {
+    background-position: 50% 50%;
+  }
+  25% {
+    background-position: 55% 45%;
+  }
+  50% {
+    background-position: 60% 55%;
+  }
+  75% {
+    background-position: 45% 60%;
+  }
+  100% {
+    background-position: 50% 50%;
+  }
+}
+
+/* Responsive height and positioning */
+@media (max-width: 1024px) {
+  .home_banner_outer {
+    height: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home_banner_outer {
+    height: 500px;
+    background-position: center top;
+  }
+}
+
+@media (max-width: 480px) {
+  .home_banner_outer {
+    height: 400px;
+    background-position: center top;
+  }
+}
+
+
+
+
+
+
+
+
+.animated-border {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(270deg, #facc15, #a855f7, #972FB8);
+  background-size: 600% 600%;
+  z-index: -1;
+  border-radius: 0.5rem; /* match the rounded-lg */
+  animation: animatedGradient 6s ease infinite;
+}
+
+@keyframes animatedGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
